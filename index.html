@@ -190,7 +190,7 @@
     border-radius:2px;
   }
   .loadbar.fill{
-    animation:fillbar 1.8s cubic-bezier(.4,0,.2,1) forwards;
+    animation:fillbar 6.5s cubic-bezier(.4,0,.2,1) forwards;
   }
   @keyframes fillbar{ to{ width:100%; } }
 
@@ -565,13 +565,13 @@
     setTimeout(()=>{
       flash.classList.add('pop');
       fadeOutAudio();
-    }, 3050);
+    }, 7900);
 
     setTimeout(()=>{
       boot.style.display = 'none';
       home.classList.add('show');
       initClock();
-    }, 3300);
+    }, 8200);
   }
 
   function fadeOutAudio(){
