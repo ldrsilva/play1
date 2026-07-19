@@ -441,13 +441,14 @@
       <a href="https://t.me/pleysteshun" target="_blank" rel="noopener" title="Telegram" onclick="event.stopPropagation()">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-1 1.3-1.9.8l-5.3-3.9-2.6 2.5c-.3.3-.5.5-1 .5l.4-5.3L18 8.2c.5-.4-.1-.6-.7-.2L6.8 14.6l-5.1-1.6c-1.1-.3-1.1-1.1.2-1.6L20.5 3.5c.9-.3 1.7.2 1.4.8Z"/></svg>
       </a>
-      <a href="#" class="disabled" title="Twitter / X (coming soon)" style="cursor:default;" onclick="event.stopPropagation(); event.preventDefault();">
+      <a href="https://x.com/PleySteShunrh" target="_blank" rel="noopener" title="Twitter / X" onclick="event.stopPropagation()">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.6 10.6 21 2h-2l-6.4 7.3L7.6 2H2l7.7 11.2L2 22h2l6.8-7.8L16.4 22H22l-8.4-11.4Zm-2.4 2.8-.8-1.1L4.1 3.5h2.6l5 7.2.8 1.1 6.6 9.4h-2.6l-5.3-7.8Z"/></svg>
       </a>
     </div>
   </div>
 
   <audio id="bootSound" src="assets/psx.mp3" preload="auto"></audio>
+  <audio id="plingSound" src="assets/pling.mp3" preload="auto"></audio>
 
   <!-- BOOT ANIMATION -->
   <div id="boot">
@@ -469,7 +470,7 @@
       <a href="https://t.me/pleysteshun" target="_blank" rel="noopener" title="Telegram">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-1 1.3-1.9.8l-5.3-3.9-2.6 2.5c-.3.3-.5.5-1 .5l.4-5.3L18 8.2c.5-.4-.1-.6-.7-.2L6.8 14.6l-5.1-1.6c-1.1-.3-1.1-1.1.2-1.6L20.5 3.5c.9-.3 1.7.2 1.4.8Z"/></svg>
       </a>
-      <a href="#" class="disabled" title="Twitter / X (coming soon)" style="cursor:default;" onclick="event.preventDefault();">
+      <a href="https://x.com/PleySteShunrh" target="_blank" rel="noopener" title="Twitter / X">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.6 10.6 21 2h-2l-6.4 7.3L7.6 2H2l7.7 11.2L2 22h2l6.8-7.8L16.4 22H22l-8.4-11.4Zm-2.4 2.8-.8-1.1L4.1 3.5h2.6l5 7.2.8 1.1 6.6 9.4h-2.6l-5.3-7.8Z"/></svg>
       </a>
     </div>
@@ -532,6 +533,15 @@
     }catch(e){}
   }
 
+  const plingSound = document.getElementById('plingSound');
+  function pling(){
+    try{
+      plingSound.currentTime = 0;
+      plingSound.volume = 0.7;
+      plingSound.play().catch(()=>{});
+    }catch(e){}
+  }
+
   function startBoot(){
     if(started) return;
     started = true;
@@ -581,6 +591,8 @@
 
   splash.addEventListener('click', startBoot);
   window.addEventListener('keydown', startBoot, { once:true });
+
+  window.addEventListener('click', ()=>{ if(started) pling(); });
 
   function initClock(){
     const timeEl = document.getElementById('time');
